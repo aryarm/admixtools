@@ -825,7 +825,7 @@ class TRRecord:
         full_alleles: Optional[Tuple[str, List[str]]] = None,
         ref_allele_length: Optional[float] = None,
         alt_allele_lengths: Optional[List[float]] = None,
-        quality_score_transform: Optional[Callable[..., float]] = None
+        quality_score_transform: Optional[Callable[..., float]] = None,
     ):
         self.vcfrecord = vcfrecord
         self.ref_allele = ref_allele
@@ -1404,7 +1404,7 @@ class TRRecord:
         *,
         uselength: bool = True,
         index: bool = False,
-        fullgenotypes: bool = False
+        fullgenotypes: bool = False,
     ) -> Dict[Any, int]:
         """
         Get the counts of each allele for a record.
@@ -1482,7 +1482,7 @@ class TRRecord:
         *,
         uselength: bool = True,
         index: bool = False,
-        fullgenotypes: bool = False
+        fullgenotypes: bool = False,
     ) -> Dict[Any, float]:
         """
         Get the frequencies of each allele for a record.

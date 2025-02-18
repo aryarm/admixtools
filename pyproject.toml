@@ -1,26 +1,64 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "haptools"
 version = "0.5.0"
 description = "Ancestry and haplotype aware simulation of genotypes and phenotypes for complex trait analysis"
-authors = ["Arya Massarat", "Michael Lamkin"]
+authors = [
+    {name = "Arya Massarat"},
+    {name = "Michael Lamkin"},
+]
 license = "MIT"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "numpy>=1.20.0",
+    "click>=8.0.3",
+    "pysam>=0.19.0",
+    "cyvcf2>=0.30.14",
+    "matplotlib>=3.5.1",
+    "pgenlib>=0.90.1",
+]
+
+[tool.poetry.dependencies]
+numpy = [
+    { version = "1.20.0" , markers = "python_version <= '3.9'" },
+    { version = "2.2.2" , markers = "python_version > '3.9'" },
+]
+click = [
+    { version = "8.0.3" , markers = "python_version <= '3.9'" },
+    { version = "8.1.1" , markers = "python_version > '3.9'" },
+]
+pysam = [
+    { version = "0.19.0" , markers = "python_version <= '3.9'" },
+    { version = "0.23.0" , markers = "python_version > '3.9'" },
+]
+cyvcf2 = [
+    { version = "0.30.14" , markers = "python_version <= '3.9'" },
+    { version = "0.31.1" , markers = "python_version > '3.9'" },
+]
+matplotlib = [
+    { version = "3.5.1" , markers = "python_version <= '3.9'" },
+    { version = "3.10.0" , markers = "python_version > '3.9'" },
+]
+pgenlib = [
+    { version = "0.90.1" , markers = "python_version <= '3.9'" },
+    { version = "0.92.0" , markers = "python_version > '3.9'" },
+]
+
+[project.urls]
 repository = "https://github.com/cast-genomics/haptools"
 homepage = "https://github.com/cast-genomics/haptools"
 documentation = "https://haptools.readthedocs.io"
-readme = "README.md"
+changelog = "https://github.com/CAST-genomics/haptools/blob/main/CHANGELOG.md"
 
-[tool.poetry.dependencies]
-python = ">=3.7,<4.0"
-numpy = ">=1.20.0"
-click = ">=8.0.3"
-pysam = ">=0.19.0"
-cyvcf2 = ">=0.30.14"
-matplotlib = ">=3.5.1"
-Pgenlib = ">=0.90.1"
+[project.scripts]
+haptools = "haptools.__main__:main"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
 
 [tool.poetry.group.docs.dependencies]
 Sphinx = ">=4.3.2"
@@ -36,8 +74,10 @@ ipython = ">=7.34.0"
 coverage = {extras = ["toml"], version = ">=7.2.7"}
 filprofiler = ">=2023.3.1"
 
-[tool.poetry.scripts]
-haptools = 'haptools.__main__:main'
+[tool.poetry.requires-plugins]
+poetry-conda = ">=0.1.4"
+poetry-plugin-export = ">=1.9"
+poetry-plugin-shell = ">=1.0.1"
 
 [tool.black]
 line-length = 88
